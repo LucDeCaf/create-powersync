@@ -1,25 +1,35 @@
 {
-  "name": "create-powersync-app",
-  "version": "1.0.0",
-  "description": "CLI for easily creating PowerSync web applications",
-  "main": "index.js",
-  "scripts": {
-    "test": "test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/LucDeCaf/create-powersync-app.git"
-  },
-  "keywords": [
-    "powersync",
-    "sync",
-    "local-first",
-    "cli"
-  ],
-  "author": "LucDeCaf",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/LucDeCaf/create-powersync-app/issues"
-  },
-  "homepage": "https://github.com/LucDeCaf/create-powersync-app#readme"
+    "name": "create-powersync-app",
+    "version": "0.1.0",
+    "description": "CLI for easily creating PowerSync web applications",
+    "type": "commonjs",
+    "main": "index.js",
+    "bin": {
+        "create-powersync": "index.js"
+    },
+    "scripts": {
+        "format": "prettier . --write"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/LucDeCaf/create-powersync-app.git"
+    },
+    "keywords": [
+        "powersync",
+        "sync",
+        "local-first",
+        "cli"
+    ],
+    "author": "LucDeCaf",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/LucDeCaf/create-powersync-app/issues"
+    },
+    "homepage": "https://github.com/LucDeCaf/create-powersync-app#readme",
+    "devDependencies": {
+        "kleur": "^4.1.5",
+        "prettier": "^3.5.0",
+        "prompts": "^2.4.2",
+        "unbuild": "^3.3.1"
+    }
 }
