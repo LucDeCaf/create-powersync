@@ -10,13 +10,7 @@ const TEMPLATES = [
     },
 ];
 
-function copyDir(src: string, dest: string): boolean {
-    if (fs.existsSync(dest)) {
-        return false;
-    }
-
-    fs.mkdirSync(dest, { recursive: true });
-
+function copyDir(src: string, dest: string) {
     const files = fs.readdirSync(src, { withFileTypes: true });
 
     for (const file of files) {
@@ -24,9 +18,7 @@ function copyDir(src: string, dest: string): boolean {
         const destPath = path.join(dest, file.name);
 
         if (file.isDirectory()) {
-            if (!copyDir(srcPath, destPath)) {
-                return false;
-            }
+            copyDir(srcPath, destPath);
         } else {
             fs.copyFileSync(srcPath, destPath);
         }
@@ -47,11 +39,17 @@ async function main() {
 
     const { template } = await prompts(questions);
 
+    if (fs.existsSync(template)) {
+        if (fs.readdirSync(template).length > 0) {
+            throw new Error('Target directory not empty.');
+        }
+    } else {
+        fs.mkdirSync(template, { recursive: true });
+    }
+
     console.log('Setting up project...');
 
-    if (!copyDir(path.join(import.meta.dirname, 'templates'), template)) {
-        throw new Error('Failed to write files.');
-    }
+    copyDir(path.join(import.meta.dirname, 'templates'), template);
 
     console.log('Done.');
 }
