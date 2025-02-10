@@ -1,5 +1,5 @@
 {
-    "name": "create-powersync-app",
+    "name": "create-powersync",
     "version": "0.1.0",
     "description": "CLI for easily creating PowerSync web applications",
     "type": "commonjs",
@@ -7,6 +7,10 @@
     "bin": {
         "create-powersync": "index.js"
     },
+    "files": [
+        "index.js",
+        "templates"
+    ],
     "scripts": {
         "format": "prettier . --write"
     },
