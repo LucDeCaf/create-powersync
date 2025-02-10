@@ -1,5 +1,5 @@
 {
-    "name": "@lucdecaf/create-powersync",
+    "name": "@ldecafmeyer/create-powersync",
     "version": "0.1.0",
     "description": "CLI for easily creating PowerSync web applications",
     "type": "module",
@@ -26,7 +26,7 @@
         "local-first",
         "cli"
     ],
-    "author": "LucDeCaf",
+    "author": "Luc de Cafmeyer",
     "license": "MIT",
     "bugs": {
         "url": "https://github.com/LucDeCaf/create-powersync-app/issues"
