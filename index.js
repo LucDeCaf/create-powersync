@@ -1,36 +1,12 @@
 #!/usr/bin/env node
 
-const fs = require('node:fs');
-const prompts = require('prompts');
-const {
-    black,
-    red,
-    green,
-    yellow,
-    blue,
-    magenta,
-    cyan,
-    white,
-    gray,
-    grey,
-} = require('kleur');
-
-const COLORS = {
-    black,
-    red,
-    green,
-    yellow,
-    blue,
-    magenta,
-    cyan,
-    white,
-    gray,
-    grey,
-};
+import { cpSync } from 'node:fs';
+import prompts from 'prompts';
+import kleur from 'kleur';
 
 const TEMPLATES = [
     {
-        title: `${COLORS.blue('Vite')} + ${COLORS.green('Supabase')}`,
+        title: `${kleur.blue('Vite')} + ${kleur.green('Supabase')}`,
         value: 'vite-supabase-ts',
     },
 ];
@@ -48,7 +24,10 @@ async function main() {
     const { template } = await prompts(questions);
 
     console.log('Setting up project...');
-    fs.cpSync('templates/' + template, template, { recursive: true });
+
+    cpSync('templates/' + template, template, { recursive: true });
+
+    console.log('Done.');
 }
 
 main().catch((e) => console.error(e));

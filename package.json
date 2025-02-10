@@ -1,18 +1,27 @@
 {
-    "name": "create-powersync",
+    "name": "@lucdecaf/create-powersync",
     "version": "0.1.0",
     "description": "CLI for easily creating PowerSync web applications",
-    "type": "commonjs",
-    "main": "index.js",
+    "type": "module",
+    "main": "./dist/index.cjs",
     "bin": {
         "create-powersync": "index.js"
     },
     "files": [
         "index.js",
-        "templates"
+        "templates",
+        "dist"
     ],
     "scripts": {
+        "build": "unbuild",
+        "dev": "unbuild --stub",
         "format": "prettier . --write"
+    },
+    "exports": {
+        ".": {
+            "import": "./dist/index.mjs",
+            "require": "./dist/index.cjs"
+        }
     },
     "repository": {
         "type": "git",
@@ -31,6 +40,7 @@
     },
     "homepage": "https://github.com/LucDeCaf/create-powersync-app#readme",
     "devDependencies": {
+        "@types/prompts": "^2.4.9",
         "kleur": "^4.1.5",
         "prettier": "^3.5.0",
         "prompts": "^2.4.2",
