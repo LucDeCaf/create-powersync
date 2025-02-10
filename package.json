@@ -1,0 +1,25 @@
+{
+  "name": "create-powersync-app",
+  "version": "1.0.0",
+  "description": "CLI for easily creating PowerSync web applications",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LucDeCaf/create-powersync-app.git"
+  },
+  "keywords": [
+    "powersync",
+    "sync",
+    "local-first",
+    "cli"
+  ],
+  "author": "LucDeCaf",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LucDeCaf/create-powersync-app/issues"
+  },
+  "homepage": "https://github.com/LucDeCaf/create-powersync-app#readme"
+}

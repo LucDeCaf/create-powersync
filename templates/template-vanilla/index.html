@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Vite + PowerSync + Supabase</title>
+    </head>
+    <body class="h-screen w-screen bg-slate-950">
+        <main class="flex h-full w-full items-center justify-center">
+            <div class="mb-16 flex flex-col items-center gap-8">
+                <div
+                    class="flex max-h-32 w-1/2 justify-between text-6xl text-white"
+                >
+                    <img src="/vite.svg" alt="Vite logo" />
+                    <img src="/powersync.svg" alt="PowerSync logo" />
+                    <img src="/supabase.png" alt="Supabase logo" />
+                </div>
+                <h1 class="text-7xl text-white">
+                    <span class="w-full text-center text-indigo-300">Vite</span>
+                    +
+                    <span class="w-full text-center text-blue-400"
+                        >PowerSync</span
+                    >
+                    +
+                    <span class="w-full text-center text-emerald-300"
+                        >Supabase</span
+                    >
+                </h1>
+                <button
+                    class="h-14 w-40 rounded-md bg-slate-800 text-2xl text-white hover:cursor-pointer"
+                    id="counter-button"
+                >
+                    0
+                </button>
+            </div>
+        </main>
+
+        <script type="module" src="/src/main.ts"></script>
+    </body>
+</html>

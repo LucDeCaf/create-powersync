@@ -1,0 +1,24 @@
+{
+    "name": "template-vanilla",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build",
+        "format": "prettier . --write",
+        "cleam": "rm -rf dist"
+    },
+    "devDependencies": {
+        "@tailwindcss/vite": "^4.0.5",
+        "prettier": "^3.5.0",
+        "prettier-plugin-tailwindcss": "^0.6.11",
+        "tailwindcss": "^4.0.5",
+        "typescript": "~5.7.2",
+        "vite": "^6.1.0"
+    },
+    "dependencies": {
+        "@powersync/web": "^1.13.1",
+        "@supabase/supabase-js": "^2.48.1"
+    }
+}
