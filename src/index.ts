@@ -11,9 +11,13 @@ const TEMPLATES = [
 ];
 
 function copyDir(src: string, dest: string) {
-    const files = fs.readdirSync(src, { withFileTypes: true });
+    if (!fs.existsSync(dest)) {
+        fs.mkdirSync(dest, { recursive: true });
+    } else if (fs.readdirSync(dest).length > 0) {
+        throw new Error('Directory not empty');
+    }
 
-    for (const file of files) {
+    for (const file of fs.readdirSync(src, { withFileTypes: true })) {
         const srcPath = path.join(src, file.name);
         const destPath = path.join(dest, file.name);
 
@@ -23,8 +27,6 @@ function copyDir(src: string, dest: string) {
             fs.copyFileSync(srcPath, destPath);
         }
     }
-
-    return true;
 }
 
 async function main() {
@@ -39,17 +41,9 @@ async function main() {
 
     const { template } = await prompts(questions);
 
-    if (fs.existsSync(template)) {
-        if (fs.readdirSync(template).length > 0) {
-            throw new Error('Target directory not empty.');
-        }
-    } else {
-        fs.mkdirSync(template, { recursive: true });
-    }
-
     console.log('Setting up project...');
 
-    copyDir(path.join(import.meta.dirname, 'templates'), template);
+    copyDir(path.join(import.meta.dirname, 'templates', template), template);
 
     console.log('Done.');
 }
