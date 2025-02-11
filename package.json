@@ -8,7 +8,7 @@
         "create-powersync": "index.js"
     },
     "files": [
-        "index.js",
+        "src",
         "dist"
     ],
     "scripts": {
