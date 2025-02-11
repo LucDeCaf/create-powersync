@@ -12,6 +12,7 @@
         "dist"
     ],
     "scripts": {
+        "prepublish": "unbuild",
         "build": "unbuild",
         "dev": "unbuild --stub",
         "format": "prettier . --write"
