@@ -10,6 +10,12 @@ const TEMPLATES = [
     },
 ];
 
+function isValidPackageName(name: string) {
+    return /^(?:@[a-z\d\-*~][a-z\d\-*._~]*\/)?[a-z\d\-~][a-z\d\-._~]*$/.test(
+        name,
+    );
+}
+
 function copyDir(src: string, dest: string, exclude: string[] | null) {
     if (!fs.existsSync(dest)) {
         fs.mkdirSync(dest, { recursive: true });
@@ -61,12 +67,26 @@ async function main() {
 
     const { template, packageName } = results;
 
+    if (!isValidPackageName(packageName)) {
+        console.log('Invalid package.json name');
+        return;
+    }
+
+    const templateDir = path.join(import.meta.dirname, 'templates', template);
+    const targetDir = path.join(process.cwd(), packageName);
+
     console.log('Setting up project...');
 
-    copyDir(path.join(import.meta.dirname, 'templates', template), template, [
-        'package.json',
-        'node_modules',
-    ]);
+    copyDir(templateDir, packageName, ['node_modules']);
+
+    const packageJson = JSON.parse(
+        fs.readFileSync(path.join(templateDir, 'package.json'), 'utf-8'),
+    );
+    packageJson.name = packageName;
+    fs.writeFileSync(
+        path.join(targetDir, 'package.json'),
+        JSON.stringify(packageJson, null, 4),
+    );
 
     console.log('Done.');
 }
